@@ -1,10 +1,7 @@
 import discord
-import random
 from discord.ext import commands
 import os
-import asyncio
 import json
-import sqlite3
 import base64
 import signal
 
@@ -14,10 +11,6 @@ client = commands.Bot(command_prefix="!", intents=intents)
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
-    await client.change_presence(
-        status=discord.Status.idle,
-        activity=discord.Activity(name=f"Tokenpass Decode System™️", type=discord.ActivityType.watching)
-    )
 
 #Tokenpass Decode System™️
 with open('config/config.json') as f:
@@ -46,7 +39,7 @@ def delete_token_file():
         print("Token file deleted.")
 
 
-lastpassdecode = "01011111 01001100 01101010 01001111 01110001 01101011"
+lastpassdecode = "YOUR_PART7_TOKEN_IN_BINARY"
 lastpassdecode = lastpassdecode.replace (" ", "")
 lastpass = decode_binary_word(lastpassdecode)
 create_token_file(lastpass)
